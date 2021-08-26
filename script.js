@@ -26,33 +26,32 @@ let cityName = ""
     cityName = citySearch.value;
     getWeatherApi(cityName)
 }), */
+function returnWeatherForecast(){
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" +cityName+ "&appid=" + weatherApiKey; 
+    var date = dayjs().format('M/D/YYYY');
+    var name = data.name;
+    var weathericon = data.weather.0.icon;
+   var tempel = data.main.temp;
+   var humidityPer = data.main.humidity;
+    var windSpd = data.wind.speed;
+    fetch(queryURL)
+    .then(function(response){
+        return response.json()
+    })
+    .then(function (data){
 
-    function returnWeatherForecast(event) {
-        //make URL
-        console.log("api")
-        var fiveDayApi = `https://api.openweathermap.org/api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${weatherApiKey}`;
-        fetch(fiveDayApi)
+    })
+    .catch(function(error){
+        console.log(error)
+    })
+    console.log("done")
+}
 
-            .then(function (response) {
-              return response.json();
-
-            })
-            .then(function (locationResult){
-                console.log(locationResult);
-            })
-            .catch(function (error){
-                console.error(error);
-            });
-
-
-    }
-
-submitSearch.addEventListener("click",
-async function () {
+submitSearch.addEventListener("click", function(){
     cityName = citySearch.value;
     console.log(cityName);
-    returnWeatherForecast(cityName);
-})
+    returnWeatherForecast() })
+
 /* let forecastInfo = response.list;
 
 function getWeatherApi(cityName) {
